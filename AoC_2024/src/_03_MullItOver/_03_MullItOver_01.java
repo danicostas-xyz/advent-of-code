@@ -13,9 +13,9 @@ public class _03_MullItOver_01 {
 
 	public static void main(String[] args) {
 
-		List<String> multiplicationsArray = new ArrayList<>();
-		getMultiplications(multiplicationsArray);
-		List<String> numbersArray = getNumbers(multiplicationsArray);
+		
+		ArrayList<String> multiplicationsArray = getMultiplications();
+		ArrayList<String> numbersArray = getNumbers(multiplicationsArray);
 		int total = 0;
 
 		for (String string : numbersArray) {
@@ -26,8 +26,8 @@ public class _03_MullItOver_01 {
 		System.out.println(total);
 	}
 
-	private static List<String> getNumbers(List<String> multiplicationsArray) {
-		List<String> digitsArray = new ArrayList<>();
+	public static ArrayList<String> getNumbers(ArrayList<String> multiplicationsArray) {
+		ArrayList<String> digitsArray = new ArrayList<>();
 		for (String multiplication : multiplicationsArray) {
 			String regex = "\\d{1,3},\\d{1,3}";
 			Pattern pattern = Pattern.compile(regex);
@@ -39,7 +39,10 @@ public class _03_MullItOver_01 {
 		return digitsArray;
 	}
 
-	private static void getMultiplications(List<String> multiplicationsArray) {
+	public static ArrayList<String> getMultiplications() {
+		
+		ArrayList<String> multiplicationsArray = new ArrayList<>();
+		
 		String file = "src\\inputs\\input03.txt";
 		String regex = "mul\\(\\d{1,3},\\d{1,3}\\)";
 		Pattern pattern = Pattern.compile(regex);
@@ -61,6 +64,8 @@ public class _03_MullItOver_01 {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return multiplicationsArray;
 	}
 
 }
